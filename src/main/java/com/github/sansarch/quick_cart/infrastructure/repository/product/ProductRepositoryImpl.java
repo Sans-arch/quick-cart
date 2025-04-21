@@ -2,11 +2,13 @@ package com.github.sansarch.quick_cart.infrastructure.repository.product;
 
 import com.github.sansarch.quick_cart.domain.product.Product;
 import com.github.sansarch.quick_cart.domain.product.ProductRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
     private final ProductJpaRepository productJpaRepository;
