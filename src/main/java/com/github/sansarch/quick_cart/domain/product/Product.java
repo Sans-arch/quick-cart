@@ -31,4 +31,8 @@ public class Product {
 
         return new Product(UUID.randomUUID(), name, description, price);
     }
+
+    public static Product with(UUID id, String name, String description, BigDecimal price) {
+        return new Product(id, name, description, price);
+    }
 }
