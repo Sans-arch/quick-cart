@@ -5,6 +5,11 @@ import com.github.sansarch.quick_cart.application.product.GetAllProductsUseCase;
 import com.github.sansarch.quick_cart.presentation.dtos.v1.ProductRequestDto;
 import com.github.sansarch.quick_cart.presentation.dtos.v1.ProductResponseDto;
 import com.github.sansarch.quick_cart.presentation.mappers.v1.ProductMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +26,19 @@ public class ProductController {
     private final CreateProductUseCase createProductUseCase;
     private final GetAllProductsUseCase getAllProductsUseCase;
 
+    @Operation(summary = "Create a new product", description = "Creates a new product with the given details.")
+    @ApiResponse(responseCode = "200", description = "Product created successfully",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class)))
     @PostMapping
-    public ResponseEntity<ProductResponseDto> createProduct(@Valid @RequestBody ProductRequestDto dto) {
+    public ResponseEntity<ProductResponseDto> createProduct(
+            @Parameter(description = "Product details", required = true) @Valid @RequestBody ProductRequestDto dto) {
         var saved = createProductUseCase.execute(dto.name(), dto.description(), dto.price());
         return ResponseEntity.ok(ProductMapper.toResponse(saved));
     }
 
+    @Operation(summary = "Get all products", description = "Retrieves a list of all products.")
+    @ApiResponse(responseCode = "200", description = "List of products retrieved successfully", content = @Content(
+            mediaType = "application/json", schema = @Schema(implementation = ProductResponseDto.class)))
     @GetMapping
     public ResponseEntity<List<ProductResponseDto>> getAllProducts() {
         var products = getAllProductsUseCase.execute();
