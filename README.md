@@ -1,123 +1,138 @@
-
-
 # 🛒 QuickCart
 
-**QuickCart** é uma API backend monolítica de e-commerce simplificado desenvolvida com **Java 21** e **Spring Boot 3**. O projeto aplica conceitos de **Clean Architecture**, **DDD**, autenticação com **JWT**, e utiliza **PostgreSQL**, **Redis** e **Docker** como infraestrutura principal.
-
-## 📌 Objetivo
-
-Criar uma base sólida de backend que sirva como template para projetos de APIs modernas, seguras e escaláveis, com foco em boas práticas de arquitetura e design.
+**QuickCart** é uma API REST para gerenciamento de produtos em um e-commerce simplificado.  
+Desenvolvido com foco em boas práticas como Clean Architecture, DDD, versionamento de API e testes com Testcontainers.
 
 ---
 
-## 🧰 Tecnologias e Ferramentas
+## 🚀 Funcionalidades
+
+- ✅ Cadastro de produtos (`POST /api/v1/products`)
+- ✅ Listagem de produtos (`GET /api/v1/products`)
+- ✅ Validação de dados com Bean Validation
+- ✅ Tratamento global de erros com mensagens claras
+- ✅ Documentação Swagger/OpenAPI
+- ✅ Estrutura modular com separação de responsabilidades
+- ✅ Pronto para expandir com autenticação JWT, novos agregados e muito mais
+
+---
+
+## 🧱 Arquitetura
+
+O projeto segue a **Clean Architecture**, com inspiração em DDD e separação clara de responsabilidades:
+
+```
+quick-cart
+├── domain         → Entidades e contratos (Product, ProductRepository)
+├── application    → Casos de uso (CreateProductUseCase, etc.)
+├── infrastructure → Configurações e integrações externas (JPA, Security, Swagger)
+├── presentation   → API REST, DTOs, mappers e handlers de exceções (versionado por `v1`, `v2`, etc.)
+```
+
+---
+
+## ⚙️ Tecnologias utilizadas
 
 - **Java 21**
-- **Spring Boot 3.2**
-- **Spring Security + JWT**
-- **Spring Data JPA**
-- **Flyway** – Migrations de banco de dados
-- **PostgreSQL**
-- **Redis** – Caching com Spring Cache
-- **Docker & Docker Compose**
-- **Springdoc OpenAPI** – Documentação da API
-- **Lombok**
-- **JUnit 5 + Testcontainers** – Testes automatizados
+- **Spring Boot**
+- **Spring Web & Spring Data JPA**
+- **Spring Security (configurado, mas ainda sem autenticação)**
+- **PostgreSQL** com **Flyway**
+- **Testcontainers** para testes de integração
+- **Swagger (springdoc-openapi)** para documentação da API
+- **Docker Compose** (para PostgreSQL local)
 
 ---
 
-## 📦 Estrutura do Projeto
+## 📦 Como rodar o projeto
 
-```
-src/
-└── main/java/com/quickcart/
-    ├── domain/           # Regras de negócio (entidades, interfaces)
-    ├── application/      # Casos de uso (orquestra lógica)
-    ├── infrastructure/   # Banco de dados, cache, configurações
-    ├── presentation/     # Controllers, DTOs, mapeamentos
-    └── security/         # Configuração de autenticação e JWT
-```
+### Pré-requisitos
 
----
+- Docker + Docker Compose
+- Java 21
+- Maven
 
-## 🚀 Funcionalidades (MVP)
-
-- [ ] CRUD de Produtos
-- [ ] Carrinho de compras por usuário
-- [ ] Criação de pedidos
-- [ ] Registro e login de usuários (JWT)
-- [ ] Caching de produtos e carrinhos com Redis
-- [ ] Documentação automática com Swagger
-- [ ] Testes com banco e cache em containers
-
----
-
-## 🐳 Como rodar com Docker
+### Subir o banco de dados com Docker
 
 ```bash
-# Subir serviços
 docker-compose up -d
-
-# Acessar PostgreSQL
-localhost:5432
-user: shop
-pass: shop
-
-# Acessar Redis
-localhost:6379
 ```
+
+### Rodar a aplicação
+
+```bash
+./mvnw spring-boot:run
+```
+
+A aplicação estará disponível em:  
+`http://localhost:8080`
 
 ---
 
-## 🔧 Configuração do application.properties
+## 🔍 Documentação Swagger
 
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/quickcartdb
-spring.datasource.username=shop
-spring.datasource.password=shop
+Acesse a documentação interativa em:
 
-spring.redis.host=localhost
-spring.redis.port=6379
-
-spring.jpa.hibernate.ddl-auto=none
-spring.flyway.enabled=true
-
-spring.cache.type=redis
+```
+http://localhost:8080/swagger-ui/index.html
 ```
 
----
-
-## 📚 Documentação da API
-
-Acesse [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) após rodar a aplicação.
+Você poderá visualizar e testar os endpoints diretamente pela interface.
 
 ---
 
 ## 🧪 Testes
 
-- Testes unitários e de integração com **JUnit 5**
-- Containers reais com **Testcontainers** (PostgreSQL e Redis)
+O projeto utiliza **TDD** e testes de integração com **Testcontainers** para garantir isolamento do ambiente real.
+
+### Executar os testes:
+
+```bash
+./mvnw test
+```
 
 ---
 
-## 📌 Roadmap
+## 📮 Exemplo de uso da API
 
-- [ ] Estruturação do domínio com DDD
-- [ ] Casos de uso da aplicação
-- [ ] Segurança com JWT
-- [ ] Integração com cache Redis
-- [ ] Cobertura de testes com containers
-- [ ] Deploy na nuvem (futuro)
+### ✅ Criar um produto
+
+```http
+POST /api/v1/products
+Content-Type: application/json
+
+{
+  "name": "Mouse Gamer",
+  "description": "Mouse com sensor óptico de alta precisão, 7200 DPI",
+  "price": 149.90
+}
+```
+
+### ✅ Listar produtos
+
+```http
+GET /api/v1/products
+```
+
+---
+
+## 💡 Próximos passos
+
+- [ ] Adicionar `GET /products/{id}`, `PUT`, `DELETE`
+- [ ] Implementar autenticação com JWT
+- [ ] Introduzir agregados como `Cart`, `Category`
+- [ ] Adicionar testes da camada de apresentação (MockMvc)
+- [ ] Implementar paginação e filtros
 
 ---
 
 ## 📄 Licença
 
-MIT License.
+Distribuído sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
 ---
 
-## 👨‍💻 Autor
+## ✍️ Autor
 
-**Santiago**  
-Engenheiro de Software focado em desenvolvimento backend, arquitetura limpa e APIs robustas.
+Feito com 💙 por **Sans-arch**  
+🔗 [linkedin.com/in/santiago-negreira](https://www.linkedin.com/in/santiago-negreira/)
