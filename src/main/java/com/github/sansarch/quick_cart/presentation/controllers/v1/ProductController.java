@@ -2,10 +2,10 @@ package com.github.sansarch.quick_cart.presentation.controllers.v1;
 
 import com.github.sansarch.quick_cart.application.product.CreateProductUseCase;
 import com.github.sansarch.quick_cart.application.product.GetAllProductsUseCase;
-import com.github.sansarch.quick_cart.domain.product.Product;
 import com.github.sansarch.quick_cart.presentation.dtos.v1.ProductRequestDto;
 import com.github.sansarch.quick_cart.presentation.dtos.v1.ProductResponseDto;
 import com.github.sansarch.quick_cart.presentation.mappers.v1.ProductMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class ProductController {
     private final GetAllProductsUseCase getAllProductsUseCase;
 
     @PostMapping
-    public ResponseEntity<ProductResponseDto> createProduct(@RequestBody ProductRequestDto dto) {
+    public ResponseEntity<ProductResponseDto> createProduct(@Valid @RequestBody ProductRequestDto dto) {
         var saved = createProductUseCase.execute(dto.name(), dto.description(), dto.price());
         return ResponseEntity.ok(ProductMapper.toResponse(saved));
     }
