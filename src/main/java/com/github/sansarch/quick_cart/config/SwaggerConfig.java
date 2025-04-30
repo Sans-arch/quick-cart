@@ -1,4 +1,4 @@
-package com.github.sansarch.quick_cart.infrastructure.config;
+package com.github.sansarch.quick_cart.config;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
