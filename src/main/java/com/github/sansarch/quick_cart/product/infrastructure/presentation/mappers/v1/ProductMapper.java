@@ -12,7 +12,7 @@ public class ProductMapper {
 
     public static ProductResponseDto toResponse(Product product) {
         return new ProductResponseDto(
-                product.getId(),
+                product.getId().getValue(),
                 product.getName(),
                 product.getDescription(),
                 product.getPrice()

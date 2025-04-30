@@ -44,7 +44,7 @@ class ProductRepositoryImplIntegrationTest {
         Product product = Product.create(name, description, price);
         productRepository.save(product);
 
-        Product retrievedProduct = productRepository.findById(product.getId()).orElseThrow();
+        Product retrievedProduct = productRepository.findById(product.getId().getValue()).orElseThrow();
 
         assertNotNull(retrievedProduct);
         assertEquals(name, retrievedProduct.getName());

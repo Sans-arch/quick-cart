@@ -1,6 +1,7 @@
 package com.github.sansarch.quick_cart.product.infrastructure.persistence;
 
 import com.github.sansarch.quick_cart.product.domain.entity.Product;
+import com.github.sansarch.quick_cart.product.domain.entity.vo.ProductId;
 import com.github.sansarch.quick_cart.product.domain.repository.ProductRepository;
 import org.springframework.stereotype.Repository;
 
@@ -36,7 +37,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     private ProductModel toModel(Product product) {
         ProductModel model = new ProductModel();
-        model.setId(product.getId());
+        model.setId(product.getId().getValue());
         model.setName(product.getName());
         model.setDescription(product.getDescription());
         model.setPrice(product.getPrice());
@@ -44,6 +45,6 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     private Product toEntity(ProductModel model) {
-        return Product.with(model.getId(), model.getName(), model.getDescription(), model.getPrice());
+        return Product.from(ProductId.from(model.getId()), model.getName(), model.getDescription(), model.getPrice());
     }
 }
