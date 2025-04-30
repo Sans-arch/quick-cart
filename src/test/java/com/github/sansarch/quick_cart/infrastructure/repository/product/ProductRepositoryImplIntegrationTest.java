@@ -1,7 +1,7 @@
 package com.github.sansarch.quick_cart.infrastructure.repository.product;
 
-import com.github.sansarch.quick_cart.domain.product.Product;
-import com.github.sansarch.quick_cart.domain.product.ProductRepository;
+import com.github.sansarch.quick_cart.product.domain.entity.Product;
+import com.github.sansarch.quick_cart.product.domain.repository.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

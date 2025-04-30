@@ -1,4 +1,4 @@
-package com.github.sansarch.quick_cart.presentation.dtos.v1;
+package com.github.sansarch.quick_cart.product.infrastructure.presentation.dtos.v1;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

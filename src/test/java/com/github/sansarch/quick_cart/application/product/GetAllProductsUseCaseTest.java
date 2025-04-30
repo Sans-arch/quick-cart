@@ -1,7 +1,8 @@
 package com.github.sansarch.quick_cart.application.product;
 
-import com.github.sansarch.quick_cart.domain.product.Product;
-import com.github.sansarch.quick_cart.domain.product.ProductRepository;
+import com.github.sansarch.quick_cart.product.application.usecase.GetAllProductsUseCase;
+import com.github.sansarch.quick_cart.product.domain.entity.Product;
+import com.github.sansarch.quick_cart.product.domain.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

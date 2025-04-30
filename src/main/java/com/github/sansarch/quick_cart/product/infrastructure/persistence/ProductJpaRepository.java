@@ -1,4 +1,4 @@
-package com.github.sansarch.quick_cart.infrastructure.repository.product;
+package com.github.sansarch.quick_cart.product.infrastructure.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

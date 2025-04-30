@@ -1,5 +1,6 @@
 package com.github.sansarch.quick_cart.domain.product;
 
+import com.github.sansarch.quick_cart.product.domain.entity.Product;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

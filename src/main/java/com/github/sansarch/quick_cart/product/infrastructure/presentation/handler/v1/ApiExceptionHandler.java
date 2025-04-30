@@ -1,4 +1,4 @@
-package com.github.sansarch.quick_cart.presentation.handler.v1;
+package com.github.sansarch.quick_cart.product.infrastructure.presentation.handler.v1;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

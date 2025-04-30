@@ -1,8 +1,8 @@
-package com.github.sansarch.quick_cart.presentation.mappers.v1;
+package com.github.sansarch.quick_cart.product.infrastructure.presentation.mappers.v1;
 
-import com.github.sansarch.quick_cart.domain.product.Product;
-import com.github.sansarch.quick_cart.presentation.dtos.v1.ProductRequestDto;
-import com.github.sansarch.quick_cart.presentation.dtos.v1.ProductResponseDto;
+import com.github.sansarch.quick_cart.product.domain.entity.Product;
+import com.github.sansarch.quick_cart.product.infrastructure.presentation.dtos.v1.ProductRequestDto;
+import com.github.sansarch.quick_cart.product.infrastructure.presentation.dtos.v1.ProductResponseDto;
 
 public class ProductMapper {
 

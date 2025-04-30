@@ -1,10 +1,10 @@
-package com.github.sansarch.quick_cart.presentation.controllers.v1;
+package com.github.sansarch.quick_cart.product.infrastructure.presentation.controllers.v1;
 
-import com.github.sansarch.quick_cart.application.product.CreateProductUseCase;
-import com.github.sansarch.quick_cart.application.product.GetAllProductsUseCase;
-import com.github.sansarch.quick_cart.presentation.dtos.v1.ProductRequestDto;
-import com.github.sansarch.quick_cart.presentation.dtos.v1.ProductResponseDto;
-import com.github.sansarch.quick_cart.presentation.mappers.v1.ProductMapper;
+import com.github.sansarch.quick_cart.product.application.usecase.CreateProductUseCase;
+import com.github.sansarch.quick_cart.product.application.usecase.GetAllProductsUseCase;
+import com.github.sansarch.quick_cart.product.infrastructure.presentation.dtos.v1.ProductRequestDto;
+import com.github.sansarch.quick_cart.product.infrastructure.presentation.dtos.v1.ProductResponseDto;
+import com.github.sansarch.quick_cart.product.infrastructure.presentation.mappers.v1.ProductMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

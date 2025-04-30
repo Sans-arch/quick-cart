@@ -1,4 +1,4 @@
-package com.github.sansarch.quick_cart.domain.product;
+package com.github.sansarch.quick_cart.product.domain.entity;
 
 import lombok.Getter;
 
