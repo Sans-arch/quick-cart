@@ -1,8 +1,8 @@
 package com.github.sansarch.quick_cart.application.product;
 
-import com.github.sansarch.quick_cart.product.application.usecase.CreateProductUseCase;
-import com.github.sansarch.quick_cart.product.domain.entity.Product;
-import com.github.sansarch.quick_cart.product.domain.repository.ProductRepository;
+import com.github.sansarch.quick_cart.application.usecase.CreateProductUseCase;
+import com.github.sansarch.quick_cart.domain.product.entity.Product;
+import com.github.sansarch.quick_cart.infrastructure.gateway.ProductRepositoryGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,13 +17,13 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class CreateProductUseCaseTest {
 
-    private ProductRepository productRepository;
+    private ProductRepositoryGateway productRepositoryGateway;
     private CreateProductUseCase createProductUseCase;
 
     @BeforeEach
     void setUp() {
-        productRepository = mock(ProductRepository.class);
-        createProductUseCase = new CreateProductUseCase(productRepository);
+        productRepositoryGateway = mock(ProductRepositoryGateway.class);
+        createProductUseCase = new CreateProductUseCase(productRepositoryGateway);
     }
 
     @Test
@@ -32,8 +32,8 @@ class CreateProductUseCaseTest {
         String description = "Product Description";
         BigDecimal price = BigDecimal.valueOf(19.99);
 
-        Product product = Product.create(name, description, price);
-        when(productRepository.save(any(Product.class))).thenReturn(product);
+        Product product = new Product(name, description, price);
+        when(productRepositoryGateway.save(any(Product.class))).thenReturn(product);
 
         Product createdProduct = createProductUseCase.execute(name, description, price);
 
@@ -41,7 +41,7 @@ class CreateProductUseCaseTest {
         assertEquals(name, createdProduct.getName());
         assertEquals(description, createdProduct.getDescription());
         assertEquals(price, createdProduct.getPrice());
-        verify(productRepository).save(any(Product.class));
+        verify(productRepositoryGateway).save(any(Product.class));
     }
 
     @Test
