@@ -1,4 +1,4 @@
-package com.github.sansarch.quick_cart.infrastructure.controller;
+package com.github.sansarch.quick_cart.infrastructure.controller.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

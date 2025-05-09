@@ -1,7 +1,8 @@
 package com.github.sansarch.quick_cart.main;
 
 import com.github.sansarch.quick_cart.application.gateway.ProductGateway;
-import com.github.sansarch.quick_cart.application.usecase.CreateProductUseCase;
+import com.github.sansarch.quick_cart.application.usecase.product.CreateProductUseCase;
+import com.github.sansarch.quick_cart.application.usecase.product.GetAllProductsUseCase;
 import com.github.sansarch.quick_cart.infrastructure.gateway.ProductEntityMapper;
 import com.github.sansarch.quick_cart.infrastructure.gateway.ProductRepositoryGateway;
 import com.github.sansarch.quick_cart.infrastructure.persistence.ProductJpaRepository;
@@ -14,6 +15,11 @@ public class ProductConfig {
     @Bean
     public CreateProductUseCase createProductUseCase(ProductGateway productGateway) {
         return new CreateProductUseCase(productGateway);
+    }
+
+    @Bean
+    public GetAllProductsUseCase getAllProductsUseCase(ProductGateway productGateway) {
+        return new GetAllProductsUseCase(productGateway);
     }
 
     @Bean

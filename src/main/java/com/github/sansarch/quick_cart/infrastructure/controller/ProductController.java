@@ -1,8 +1,10 @@
 package com.github.sansarch.quick_cart.infrastructure.controller;
 
-import com.github.sansarch.quick_cart.application.usecase.CreateProductUseCase;
-import com.github.sansarch.quick_cart.application.usecase.GetAllProductsUseCase;
+import com.github.sansarch.quick_cart.application.usecase.product.CreateProductUseCase;
+import com.github.sansarch.quick_cart.application.usecase.product.GetAllProductsUseCase;
 import com.github.sansarch.quick_cart.domain.product.entity.Product;
+import com.github.sansarch.quick_cart.infrastructure.controller.dto.ProductRequestDto;
+import com.github.sansarch.quick_cart.infrastructure.controller.dto.ProductResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,7 +13,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

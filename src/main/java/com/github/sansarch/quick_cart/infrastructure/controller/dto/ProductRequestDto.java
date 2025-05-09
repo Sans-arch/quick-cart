@@ -1,4 +1,4 @@
-package com.github.sansarch.quick_cart.infrastructure.controller;
+package com.github.sansarch.quick_cart.infrastructure.controller.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -12,6 +12,7 @@ public record ProductRequestDto(
         @Schema(description = "Name of the product", example = "Gamer Mouse")
         String name,
 
+        @NotBlank(message = "Description is required")
         @Schema(description = "Description of the product", example = "High precision mouse with optical sensor, 7200 DPI")
         String description,
 
